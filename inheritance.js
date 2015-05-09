@@ -21,12 +21,24 @@ console.log(q.prototype);  // undefined
 
 
 
+/*==========================================================
+=            Object referene to parent property            =
+==========================================================*/
 
-
-
-
-
-
+var a = {
+	x : 1,
+	y : 1
+};
+var b = Object.create(a);
+console.log(a);
+console.log(b);
+// b has x y but that reference to parent object
+console.log(b.x);  // 1
+a.x = 2;           // change a.x to 2
+console.log(b.x);  // b.x equal 2 because that refer to parent object
+b.y = 4;           // that will create property of b, y now belong to b, no longer refer to parent y
+a.y = 2; // change a to 2
+console.log(b.y);  // still 4, not effect by a any more
 
 
 
