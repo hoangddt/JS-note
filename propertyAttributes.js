@@ -66,3 +66,20 @@ var p = Object.defineProperties({}, {
 		configurable:true
 	}
 });
+
+/*==========  Try to change from data property to accessor property  ==========*/
+var obj = {
+	x:1
+}
+console.log(Object.getOwnPropertyDescriptor(obj,'x'));
+// { value: 1, writable: true, enumerable: true, configurable: true }
+Object.defineProperty(obj,'x', {
+	set: function (val) {
+		this.x = val;
+	},
+	get: function () {
+		return this.x;
+	}
+});
+console.log(Object.getOwnPropertyDescriptor(obj,'x'));
+// { get: [Function],  set: [Function],  enumerable: true,  configurable: true }
